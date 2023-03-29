@@ -4,8 +4,13 @@ class StringRes {
   static const addCar = "Add Car";
   static const admin = "Admin";
   static const carRental = "Car Rental";
+  static const myProfile = "My Profile";
+  static const myDocument = "My Document";
+  static const logOut = "Log Out";
   ///----------------------------------------------List Screen------------------
   static const orderHistory = "Order History";
+  static const carDescription = "Description";
+  static const paymentStatus = "Payment";
   ///---------------------------------------- Symbol ---------------------------
   static const rupees = "\u{20B9}";
   ///--------------------------------------SignIn Screen------------------------

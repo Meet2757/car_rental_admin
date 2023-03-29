@@ -31,31 +31,28 @@ Widget commonAppBar({Widget? start, String? text, String? end}) => Row(
       ],
     );
 
-Widget commonAdminProfile() => InkWell(
-      onTap: () {},
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Center(
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                border: Border.all(color: ColorRes.white, width: 2),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(100),
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.asset(
-                  AssetRes.user,
-                  fit: BoxFit.fill,
-                  color: ColorRes.white,
-                ),
-              ),
-            ),
+Widget commonAdminProfile() => Stack(
+  alignment: Alignment.bottomCenter,
+  children: [
+    Center(
+      child: Container(
+        height: 30,
+        width: 30,
+        decoration: BoxDecoration(
+          border: Border.all(color: ColorRes.white, width: 2),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(100),
           ),
-        ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: Image.asset(
+            AssetRes.user,
+            fit: BoxFit.fill,
+            color: ColorRes.white,
+          ),
+        ),
       ),
-    );
+    ),
+  ],
+);

@@ -25,5 +25,12 @@ class AssetRes {
   static const hondaCivic = '${images}honda civic.png';
   static const notificationPageAppbar = '${images}notificationPageAppbar.png';
   static const logoNotification = '${images}logoNotification.png';
+  static const myProfile = '${images}MyProfile.png';
+  static const myDocument = '${images}MyDocument.png';
+  static const logOut = '${images}logOut.png';
+  static const aadhaarLogo = '${images}aadhaarLogo.png';
+  static const drivingLogo = '${images}drivingLogo.png';
+  static const passPhotoLogo = '${images}passPhotoLogo.png';
+
 
 }

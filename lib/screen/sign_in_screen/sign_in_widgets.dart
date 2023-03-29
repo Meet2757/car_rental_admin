@@ -103,7 +103,7 @@ Widget forgot = GetBuilder<SignInScreenController>(builder: (controller) {
 Widget loginbutton = GetBuilder<SignInScreenController>(builder: (controller) {
   return InkWell(
     onTap: () {
-      Get.to(const DashboardScreen());
+      controller.homePageDrawer();
     },
     child: commonDoneButton(
       StringRes.login,

@@ -30,8 +30,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                label(text: StringRes.admin, size: 16.0, color: ColorRes.white),
-                label(text: StringRes.carRental, size: 14.0, color: ColorRes.white),
+                label(text: StringRes.admin, size: 12.0, color: ColorRes.white),
+                label(text: StringRes.carRental, size: 10.0, color: ColorRes.white),
               ],
             ),
             leading: InkWell(
@@ -51,7 +51,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: Image.asset(
                       AssetRes.notificationAppbar,
                       color: ColorRes.white,
-                      width: Get.width * 0.080,
+                      width: Get.width * 0.060,
                     )),
               )
             ],
