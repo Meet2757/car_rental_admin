@@ -1,5 +1,7 @@
-import 'package:car_rental_admin/screen/Order_History_page/order_history_screen.dart';
+import 'package:car_rental_admin/screen/Home_Page/home_screen.dart';
 import 'package:car_rental_admin/screen/sign_in_screen/sign_in_screen.dart';
+import 'package:car_rental_admin/service/pref_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,6 +13,8 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  await PrefServices.init();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -19,9 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    String isLogin = PrefServices.getString("isLogin");
+    return  GetMaterialApp(
       title: 'CarRental',
-      home: SignInScreen(),
+      home: isLogin!=""?const HomepageDrawer():const SignInScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

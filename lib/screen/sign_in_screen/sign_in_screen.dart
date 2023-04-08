@@ -12,32 +12,27 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(SignInScreenController());
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: SizedBox(
-            height: Get.height,
-            width: Get.width,
-            child: Column(
-              children: [
-                verticalSpace(Get.height * 0.1),
-                title,
-                verticalSpace(Get.height * 0.02),
-                line,
-                verticalSpace(Get.height * 0.04),
-                phone,
-                verticalSpace(Get.height * 0.04),
-                password,
-                verticalSpace(Get.height * 0.04),
-                forgot,
-                verticalSpace(Get.height * 0.08),
-                loginbutton,
-                verticalSpace(Get.height * 0.04),
-                account,
-                verticalSpace(Get.height * 0.04),
-              ],
-            ),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: SizedBox(
+          height: Get.height,
+          width: Get.width,
+          child: Column(
+            children: [
+              verticalSpace(Get.height * 0.1),
+              title,
+              verticalSpace(Get.height * 0.02),
+              line,
+              verticalSpace(Get.height * 0.04),
+              phone(context),
+              verticalSpace(Get.height * 0.04),
+              account(context),
+              verticalSpace(Get.height * 0.04),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

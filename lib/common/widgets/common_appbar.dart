@@ -2,7 +2,6 @@ import 'package:car_rental_admin/common/common_text_and_style.dart';
 import 'package:car_rental_admin/utils/asset_res.dart';
 import 'package:car_rental_admin/utils/color_res.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 Widget commonAppBar({Widget? start, String? text, String? end}) => Row(
       children: [
