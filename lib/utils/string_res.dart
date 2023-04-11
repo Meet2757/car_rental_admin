@@ -7,7 +7,7 @@ class StringRes {
   static const myDocument = "My Document";
   static const logOut = "Log Out";
   static const camera = "Camera";
-  static const gallery = "Galary";
+  static const gallery = "Gallery";
   ///----------------------------------------------List Screen------------------
   static const orderHistory = "Order History";
   static const carDescription = "Description";

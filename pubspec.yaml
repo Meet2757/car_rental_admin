@@ -43,6 +43,7 @@ dependencies:
   #----------------------------------------Zoom_Drawer----------------------------------------------
   flutter_zoom_drawer: ^3.0.4+1
   image_picker: ^0.8.7+1
+  file_picker: ^5.2.5
   #---------------------------------------Firebase Authentication-----------------------------------
   firebase_core:
   firebase_auth:

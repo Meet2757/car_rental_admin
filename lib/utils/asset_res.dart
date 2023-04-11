@@ -31,6 +31,7 @@ class AssetRes {
   static const aadhaarLogo = '${images}aadhaarLogo.png';
   static const drivingLogo = '${images}drivingLogo.png';
   static const passPhotoLogo = '${images}passPhotoLogo.png';
+  static const sidebar = '${images}sidebar.png';
 
 
 }

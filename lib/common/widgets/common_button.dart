@@ -24,23 +24,18 @@ Widget backButton() => InkWell(
 );
 
 
-Widget commonEditButton() => InkWell(
-      onTap: () {
-
-      },
-      child: Container(
-        height: Get.height * 0.04,
-        width: Get.height,
-        decoration: BoxDecoration(
-          color: ColorRes.darkSlateGray,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: const Icon(
-          Icons.edit,
-          color: ColorRes.white,
-        ),
-      ),
-    );
+Widget commonEditButton() => Container(
+  height: Get.height * 0.04,
+  width: Get.height,
+  decoration: BoxDecoration(
+    color: ColorRes.darkSlateGray,
+    borderRadius: BorderRadius.circular(10),
+  ),
+  child: const Icon(
+    Icons.edit,
+    color: ColorRes.white,
+  ),
+);
 
 Widget commonDeleteButton() => InkWell(
       onTap: () {
@@ -95,25 +90,31 @@ Widget commonDoneButton(String title) => Container(
       ),
     );
 
-Widget commonPriceButton(String price) => InkWell(
-      onTap: () {},
-      child: Container(
-        height: Get.height * 0.04,
-        width: Get.width * 0.23,
-        decoration: BoxDecoration(
-          color: ColorRes.darkSlateGray,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Center(
-          child: label(
-              text: '${StringRes.rupees} $price/day',
-              textAlign: TextAlign.center,
-              fontFamily: AssetRes.poppinsBold,
-              color: ColorRes.white,
-              size: 12),
-        ),
+Widget commonPriceButton(String price) => Container(
+  height: Get.height * 0.05,
+  padding: EdgeInsets.all(10),
+  decoration: const BoxDecoration(
+   color: ColorRes.darkSlateGray,
+    borderRadius:
+    BorderRadius.all(Radius.circular(15)),
+    boxShadow: [
+      BoxShadow(
+        color: ColorRes.gray63,
+        blurRadius: 2,
+        spreadRadius: 1,
+        offset: Offset(0, 2),
       ),
-    );
+    ],
+  ),
+  child: Center(
+    child: label(
+        text: '${StringRes.rupees} $price/day',
+        textAlign: TextAlign.center,
+        fontFamily: AssetRes.poppinsBold,
+        color: ColorRes.white,
+        size: 12),
+  ),
+);
 
 Widget commonTrackButton(String title) => InkWell(
   onTap: () {},

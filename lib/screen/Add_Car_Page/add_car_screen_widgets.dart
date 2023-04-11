@@ -476,7 +476,7 @@ Widget carName = GetBuilder<AddCarScreenController>(
                   InkWell(
                     onTap: () {
                       if (controller.formKey.currentState!.validate()) {
-                        controller.loginData();
+                        controller.addCarData();
                       } else {
                         controller.formKey.currentState!.validate();
                       }

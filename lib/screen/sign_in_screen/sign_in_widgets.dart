@@ -150,6 +150,7 @@ Widget phone(BuildContext context) => GetBuilder<SignInScreenController>(
                           print('true');
                           controller.homePageDrawer();
                           PrefServices.addData('IsLogin', 'isLogin');
+                          PrefServices.addData('userEmail', controller.adminData['Email']);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(

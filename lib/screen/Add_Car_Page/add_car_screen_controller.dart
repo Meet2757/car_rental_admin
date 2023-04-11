@@ -50,7 +50,7 @@ class AddCarScreenController extends GetxController {
     update(["carName"]);
   }
 
-  Future<void> loginData() async {
+  Future<void> addCarData() async {
     String? key = database.ref("Admin").child("AddCar").push().key;
     List<String> imageList = [];
     int counter = 0;
