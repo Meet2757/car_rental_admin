@@ -5,7 +5,6 @@ import 'package:car_rental_admin/screen/notification_page/notification_screen.da
 import 'package:car_rental_admin/service/pref_service.dart';
 import 'package:car_rental_admin/utils/color_res.dart';
 import 'package:car_rental_admin/utils/string_res.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,6 @@ class ProfileController extends GetxController {
   DatabaseReference databases = FirebaseDatabase.instance.ref('Admin').child('ProfileData');
   Map adminProfileDetails = {};
   //--------------------------------get adminImage -----------------------------
-
 
 
   @override

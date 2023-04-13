@@ -23,15 +23,11 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Get.to(()=>const AddCarScreen());
-        },
-        label: const Text(StringRes.addCar),
-        backgroundColor: ColorRes.darkSlateGray,
-        icon: const Icon(Icons.add),
-        tooltip: StringRes.addCar,
-      ),
+      floatingActionButton: GetBuilder<HomeScreenController>(builder: (controller) {
+        return Container(
+          child: addNewCar,
+        );
+      },),
     );
   }
 }

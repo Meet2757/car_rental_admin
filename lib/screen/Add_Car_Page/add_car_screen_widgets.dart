@@ -381,9 +381,9 @@ Widget carName = GetBuilder<AddCarScreenController>(
                   Obx(
                     () => Radio(
                       value: "petrol",
-                      groupValue: controller.selectedRadios.value,
+                      groupValue: controller.selectedCarFuel.value,
                       onChanged: (value) {
-                        controller.changeSelectedRadios(value);
+                        controller.chengSelectedCarFuel(value);
                       },
                     ),
                   ),
@@ -394,9 +394,9 @@ Widget carName = GetBuilder<AddCarScreenController>(
                   Obx(
                     () => Radio(
                       value: "diesel",
-                      groupValue: controller.selectedRadios.value,
+                      groupValue: controller.selectedCarFuel.value,
                       onChanged: (value) {
-                        controller.changeSelectedRadios(value);
+                        controller.chengSelectedCarFuel(value);
                       },
                     ),
                   ),
@@ -407,9 +407,9 @@ Widget carName = GetBuilder<AddCarScreenController>(
                   Obx(
                     () => Radio(
                       value: "electronic",
-                      groupValue: controller.selectedRadios.value,
+                      groupValue: controller.selectedCarFuel.value,
                       onChanged: (value) {
-                        controller.changeSelectedRadios(value);
+                        controller.chengSelectedCarFuel(value);
                       },
                     ),
                   ),
@@ -457,10 +457,12 @@ Widget carName = GetBuilder<AddCarScreenController>(
                       child: DottedBorder(
                           borderType: BorderType.Rect,
                           padding: const EdgeInsets.all(40),
-                          child: const Icon(
-                            Icons.add,
-                            size: 25,
-                            color: ColorRes.black,
+                          child: const Center(
+                            child: Icon(
+                              Icons.add,
+                              size: 25,
+                              color: ColorRes.black,
+                            ),
                           )),
                     ):SizedBox(
                       width:150,

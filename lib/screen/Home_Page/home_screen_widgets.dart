@@ -65,7 +65,7 @@ Widget carList = GetBuilder<HomeScreenController>(
                           controller.carListShow[index]['price']),
                       Spacer(),
                       InkWell(
-                        onTap: ()=>controller.editCarDetails(),
+                        onTap: ()=>controller.editCarDetails(controller.carListShow[index]['key']),
                         child: Container(
                           width: 40,
                           decoration: const BoxDecoration(
@@ -117,19 +117,17 @@ Widget carList = GetBuilder<HomeScreenController>(
   );
 });
 
-// Widget addNewCar = GetBuilder<HomeScreenController>(builder: (controller) {
-//   return Align(
-//     alignment: Alignment.bottomRight,
-//     child: Padding(
-//       padding: const EdgeInsets.only(right: 10.0),
-//       child: FloatingActionButton.extended(
-//         onPressed: () {
-//         controller.addCar();
-//       }, label: const Text(StringRes.addCar),
-//         backgroundColor: ColorRes.darkSlateGray,
-//         icon: const Icon(Icons.add),
-//         tooltip: StringRes.addCar,
-//       ),
-//     ),
-//   );
-// });
+Widget addNewCar = GetBuilder<HomeScreenController>(builder: (controller) {
+  return Align(
+    alignment: Alignment.bottomRight,
+    child: Padding(
+      padding: const EdgeInsets.only(right: 10.0),
+      child: FloatingActionButton.extended(
+        onPressed: ()=>controller.addCar(), label: const Text(StringRes.addCar),
+        backgroundColor: ColorRes.darkSlateGray,
+        icon: const Icon(Icons.add),
+        tooltip: StringRes.addCar,
+      ),
+    ),
+  );
+});

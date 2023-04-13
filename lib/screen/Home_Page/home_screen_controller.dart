@@ -1,9 +1,8 @@
 import 'package:car_rental_admin/screen/Add_Car_Page/add_car_screen.dart';
-import 'package:car_rental_admin/screen/Home_Page/home_screen.dart';
+import 'package:car_rental_admin/screen/Add_Car_Page/add_car_screen_controller.dart';
 import 'package:car_rental_admin/screen/Profile_page/profile_screen.dart';
 import 'package:car_rental_admin/screen/notification_page/notification_screen.dart';
 import 'package:car_rental_admin/screen/sign_in_screen/sign_in_screen.dart';
-import 'package:car_rental_admin/utils/asset_res.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
@@ -42,6 +41,7 @@ class HomeScreenController extends GetxController {
   }
 
   void addCar() {
+    Get.put(AddCarScreenController());
     Get.to(() => const AddCarScreen())?.then((value) {
       carListShow.add(
         {
@@ -62,7 +62,9 @@ class HomeScreenController extends GetxController {
     Get.to(() => const SignInScreen());
   }
 
-  void editCarDetails() {
+  void editCarDetails(String key) {
+    AddCarScreenController controller = Get.put(AddCarScreenController());
+    controller.onTepEdit(key);
     Get.to(() => const AddCarScreen());
   }
 
