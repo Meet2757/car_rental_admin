@@ -37,23 +37,18 @@ Widget commonEditButton() => Container(
   ),
 );
 
-Widget commonDeleteButton() => InkWell(
-      onTap: () {
-
-      },
-      child: Container(
-        height: Get.height * 0.04,
-        width: Get.height,
-        decoration: BoxDecoration(
-          color: ColorRes.darkSlateGray,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: const Icon(
-          Icons.delete,
-          color: ColorRes.white,
-        ),
-      ),
-    );
+Widget commonDeleteButton() => Container(
+  height: Get.height * 0.04,
+  width: Get.height,
+  decoration: BoxDecoration(
+    color: ColorRes.darkSlateGray,
+    borderRadius: BorderRadius.circular(10),
+  ),
+  child: const Icon(
+    Icons.delete,
+    color: ColorRes.white,
+  ),
+);
 
 Widget whiteBackButton() => InkWell(
       onTap: () {
@@ -92,7 +87,7 @@ Widget commonDoneButton(String title) => Container(
 
 Widget commonPriceButton(String price) => Container(
   height: Get.height * 0.05,
-  padding: EdgeInsets.all(10),
+  padding: const EdgeInsets.all(10),
   decoration: const BoxDecoration(
    color: ColorRes.darkSlateGray,
     borderRadius:

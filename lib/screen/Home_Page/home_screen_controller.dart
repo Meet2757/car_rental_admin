@@ -5,14 +5,15 @@ import 'package:car_rental_admin/screen/notification_page/notification_screen.da
 import 'package:car_rental_admin/screen/sign_in_screen/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 
 class HomeScreenController extends GetxController {
   final auth = FirebaseAuth.instance;
-
   DatabaseReference database =
       FirebaseDatabase.instance.ref('Admin').child('AddCar');
   List<Map<String?, dynamic>> carListShow = [];
+  final FirebaseStorage storage = FirebaseStorage.instance;
 
   @override
   void onInit() {
@@ -41,17 +42,48 @@ class HomeScreenController extends GetxController {
   }
 
   void addCar() {
-    Get.put(AddCarScreenController());
+    Get.lazyPut(()=>AddCarScreenController());
     Get.to(() => const AddCarScreen())?.then((value) {
-      carListShow.add(
-        {
-          "title": value["CarName"],
-          "subtitle": value["GearBox"],
-          "price": value["CarPrice"],
-          "image": value["CarImage"][0],
-        },
-      );
+      if(value!=null){
+        carListShow.add(
+          {
+            "key": value["key"],
+            "title": value["CarName"],
+            "subtitle": value["GearBox"],
+            "price": value["CarPrice"],
+            "image": value["CarImage"][0],
+          },
+        );
+        update(["cars"]);
+      }else{
+        getCarData();
+      }
     });
+  }
+
+  Future<void> deleteCar(String keyDelete,int index) async {
+    await deleteFolder(keyDelete);
+   await database.child(keyDelete).remove();
+    carListShow.removeAt(index);
+    update(["cars"]);
+  }
+
+  Future<void> deleteFolder(String deleteKey) async {
+    await database.once().then((value) async {
+      Map temp = value.snapshot.value as Map;
+      print(temp);
+      List imageUrl = [];
+      temp.forEach((key, value) {
+        if(key == deleteKey){
+          imageUrl.addAll(value["CarImage"]);
+        }
+      });
+      for(var element in imageUrl){
+        await FirebaseStorage.instance.refFromURL(element).delete();
+      }
+    });
+
+
   }
 
   void notification() {
@@ -71,4 +103,6 @@ class HomeScreenController extends GetxController {
   void profileScreen(){
     Get.to(()=>const ProfileScreen());
   }
+
+
 }

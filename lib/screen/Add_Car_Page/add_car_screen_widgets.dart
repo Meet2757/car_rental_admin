@@ -420,6 +420,7 @@ Widget carName = GetBuilder<AddCarScreenController>(
                 ],
               ),
             ),
+            oldCarImage,
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text.rich(
@@ -447,26 +448,30 @@ Widget carName = GetBuilder<AddCarScreenController>(
               child: SizedBox(
                 height: 150,
                 child: ListView.builder(
-                  itemCount: controller.listImagePath.length+1,
+                  itemCount: controller.listImagePath.length + 1,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return index == 0 ? InkWell(
-                      onTap: () {
-                        controller.selectMultipleImage();
-                      },
-                      child: DottedBorder(
-                          borderType: BorderType.Rect,
-                          padding: const EdgeInsets.all(40),
-                          child: const Center(
-                            child: Icon(
-                              Icons.add,
-                              size: 25,
-                              color: ColorRes.black,
-                            ),
-                          )),
-                    ):SizedBox(
-                      width:150,
-                      child: Image.file(controller.listImagePath[index-1]),);
+                    return index == 0
+                        ? InkWell(
+                            onTap: () {
+                              controller.selectMultipleImage();
+                            },
+                            child: DottedBorder(
+                                borderType: BorderType.Rect,
+                                padding: const EdgeInsets.all(40),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 25,
+                                    color: ColorRes.black,
+                                  ),
+                                )),
+                          )
+                        : SizedBox(
+                            width: 150,
+                            child:
+                                Image.file(controller.listImagePath[index - 1]),
+                          );
                   },
                 ),
               ),
@@ -476,13 +481,7 @@ Widget carName = GetBuilder<AddCarScreenController>(
               child: Row(
                 children: [
                   InkWell(
-                    onTap: () {
-                      if (controller.formKey.currentState!.validate()) {
-                        controller.addCarData();
-                      } else {
-                        controller.formKey.currentState!.validate();
-                      }
-                    },
+                    onTap: ()=>controller.onTapButton(),
                     child: Container(
                       child: commonDoneButton(StringRes.saveButton),
                     ),
@@ -496,4 +495,51 @@ Widget carName = GetBuilder<AddCarScreenController>(
       ),
     );
   },
+);
+
+Widget oldCarImage = GetBuilder<AddCarScreenController>(
+  id: "oldImage",
+  builder: (controller) => Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      children: [
+        label(
+            text: "Old Uploaded Image",
+            size: 14,
+            fontFamily: AssetRes.poppinsRegular),
+        SizedBox(
+          height: 150,
+          child: ListView.builder(
+            itemCount: controller.oldImageUrlList.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Stack(
+                children: [
+                  DottedBorder(
+                    borderType: BorderType.Rect,
+                    padding: const EdgeInsets.all(40),
+                    child: SizedBox(
+                      child: Image.network(controller.oldImageUrlList[index]),
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,right: 10,
+                    child: InkWell(
+                      onTap: () => controller.removeImage(index),
+                      child: const SizedBox(
+                        height: 40,
+                        width: 40,
+                        child:
+                        Icon(Icons.delete, color: ColorRes.mahogany, size: 20),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
+    ),
+  ),
 );

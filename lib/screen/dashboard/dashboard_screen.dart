@@ -116,14 +116,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                   const Divider(thickness: 2),
                   ListTile(
-                    leading: Image.asset(AssetRes.notificationAppbar,
+                    leading: Image.asset(AssetRes.list,
                         height: 24, color: ColorRes.white),
                     title: label(
-                        text: StringRes.notification,
+                        text: StringRes.orderHistory,
                         size: 13,
                         color: ColorRes.white),
                     onTap: () {
-                      Get.to(const NotificationScreen());
+                      Get.to(DashboardScreen());
                     },
                   ),
                   const Divider(thickness: 2),
@@ -192,7 +192,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Radius.circular(100),
                       ),
                     ),
-                    child:controller.imageProfile==null?Center(child: CircularProgressIndicator(),): ClipRRect(
+                    child:controller.imageProfile==null?const Center(child: CircularProgressIndicator(),): ClipRRect(
                       borderRadius: BorderRadius.circular(100),
                       child: Image.network(controller.imageProfile!,fit: BoxFit.fitHeight,),
                     ),
