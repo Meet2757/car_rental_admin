@@ -15,6 +15,7 @@ class AddCarScreenController extends GetxController {
   TextEditingController carSheet = TextEditingController();
   TextEditingController carDescription = TextEditingController();
   String? editCarKey;
+  bool isLoading = false;
 
   List<File> listImagePath = [];
   List oldImageUrlList = [];
@@ -34,6 +35,8 @@ class AddCarScreenController extends GetxController {
     selectedCarFuel.value = fuelType;
     update(['changeSelectRadio']);
   }
+
+
 
   Future<void> onTepEdit(String key) async {
     oldImageUrlList.clear();
@@ -72,6 +75,7 @@ class AddCarScreenController extends GetxController {
   }
 
   Future<void> addCarData() async {
+
     String? key = database.ref("Admin").child("AddCar").push().key;
     List<String> imageList = [];
     int counter = 0;

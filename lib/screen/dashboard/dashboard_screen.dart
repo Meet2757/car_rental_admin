@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 
-import '../notification_page/notification_screen.dart';
 
 class HomepageDrawer extends StatefulWidget {
   const HomepageDrawer({Key? key}) : super(key: key);
@@ -123,7 +122,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         size: 13,
                         color: ColorRes.white),
                     onTap: () {
-                      Get.to(DashboardScreen());
+                      Get.to(const DashboardScreen());
                     },
                   ),
                   const Divider(thickness: 2),
