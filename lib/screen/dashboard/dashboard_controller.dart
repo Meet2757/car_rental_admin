@@ -1,4 +1,3 @@
-import 'package:car_rental_admin/screen/Profile_page/profile_screen.dart';
 import 'package:car_rental_admin/screen/notification_page/notification_screen.dart';
 import 'package:car_rental_admin/screen/sign_in_screen/sign_in_screen.dart';
 import 'package:car_rental_admin/service/pref_service.dart';
@@ -30,17 +29,17 @@ class DashboardController extends GetxController{
   Future<void> getProfileData() async {
     await databases.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      print(temp);
+      //print(temp);
       imageProfile=temp["ProfileImage"];
       adminProfileDetails.addAll(temp);
-      print(adminProfileDetails);
+      //print(adminProfileDetails);
     });
     update(["profileDetails"]);
   }
 
   void profileData() {
     String? key = PrefServices.getString("userEmail");
-    print(key);
+    //print(key);
     updateKey = key;
     database.ref("Admin").child("ProfileData").child(key).set({
       "ProfileImage": imageProfile,

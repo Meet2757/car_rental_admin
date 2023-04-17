@@ -54,7 +54,7 @@ class ProfileController extends GetxController {
       final imageUrl = await task.ref.getDownloadURL();
       imageProfile = imageUrl;
       String? key = PrefServices.getString("userEmail") ;
-      print(key);
+      //print(key);
       updateKey = key;
       database.ref("Admin").child("ProfileData").child(key).update({"ProfileImage": imageProfile,});
     }
@@ -117,21 +117,21 @@ class ProfileController extends GetxController {
   Future<void> getProfileData() async {
     await databases.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      print(temp);
+      //print(temp);
       firstName.text = temp["FirstName"];
       lastName.text = temp["LastName"];
       phone.text = temp["Phone_no"];
       email.text = temp["Email"];
       imageProfile=temp["ProfileImage"];
       adminProfileDetails.addAll(temp);
-      print(adminProfileDetails);
+      //print(adminProfileDetails);
     });
     update(["profileDetails"]);
   }
 
   void profileData(){
     String? key = PrefServices.getString("userEmail") ;
-    print(key);
+    //print(key);
     updateKey = key;
     database.ref("Admin").child("ProfileData").child(key).set({
       "FirstName": firstName.text,

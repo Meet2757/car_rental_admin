@@ -39,9 +39,9 @@ class SignInScreenController extends GetxController {
   Future<void> getData() async {
     await database.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      print(temp['Email']);
+      //print(temp['Email']);
       adminData.addAll(temp);
-      print(adminData);
+      //print(adminData);
 
     });
   }

@@ -25,7 +25,7 @@ class HomeScreenController extends GetxController {
   Future<void> getCarData() async {
     await database.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      print(temp);
+      //print(temp);
       temp.forEach((key, value) {
         carListShow.add(
           {
@@ -71,7 +71,7 @@ class HomeScreenController extends GetxController {
   Future<void> deleteFolder(String deleteKey) async {
     await database.once().then((value) async {
       Map temp = value.snapshot.value as Map;
-      print(temp);
+      //print(temp);
       List imageUrl = [];
       temp.forEach((key, value) {
         if(key == deleteKey){

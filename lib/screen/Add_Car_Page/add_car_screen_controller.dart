@@ -106,6 +106,7 @@ class AddCarScreenController extends GetxController {
   }
 
   Future<void> onTapSave() async {
+
     for(var element in deleteImageList){
       await FirebaseStorage.instance.refFromURL(element).delete();
     }
