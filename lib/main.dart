@@ -1,3 +1,4 @@
+import 'package:car_rental_admin/screen/Add_Car_Page/add_car_screen.dart';
 import 'package:car_rental_admin/screen/Home_Page/home_screen.dart';
 import 'package:car_rental_admin/screen/dashboard/dashboard_screen.dart';
 import 'package:car_rental_admin/screen/sign_in_screen/sign_in_screen.dart';

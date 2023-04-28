@@ -28,8 +28,6 @@ class ProfileController extends GetxController {
   //----------------------------------Store a data in firebase -------------------
   DatabaseReference databases = FirebaseDatabase.instance.ref('Admin').child('ProfileData');
   Map adminProfileDetails = {};
-  //--------------------------------get adminImage -----------------------------
-
 
   @override
   void onInit() {

@@ -10,8 +10,7 @@ import 'package:get/get.dart';
 
 class HomeScreenController extends GetxController {
   final auth = FirebaseAuth.instance;
-  DatabaseReference database =
-      FirebaseDatabase.instance.ref('Admin').child('AddCar');
+  DatabaseReference database = FirebaseDatabase.instance.ref('Admin').child('AddCar');
   List<Map<String?, dynamic>> carListShow = [];
   final FirebaseStorage storage = FirebaseStorage.instance;
 
@@ -25,7 +24,7 @@ class HomeScreenController extends GetxController {
   Future<void> getCarData() async {
     await database.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      //print(temp);
+      print(temp);
       temp.forEach((key, value) {
         carListShow.add(
           {
@@ -82,8 +81,6 @@ class HomeScreenController extends GetxController {
         await FirebaseStorage.instance.refFromURL(element).delete();
       }
     });
-
-
   }
 
   void notification() {
@@ -103,6 +100,5 @@ class HomeScreenController extends GetxController {
   void profileScreen(){
     Get.to(()=>const ProfileScreen());
   }
-
 
 }

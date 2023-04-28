@@ -16,7 +16,7 @@ class AddCarScreenController extends GetxController {
   TextEditingController carDescription = TextEditingController();
   String? editCarKey;
   bool isLoading = false;
-
+  var dropDownList = ["All","Sedan","Suv","Mpv","Hatchback"];
   List<File> listImagePath = [];
   List oldImageUrlList = [];
   List<String> deleteImageList = [];
@@ -25,6 +25,7 @@ class AddCarScreenController extends GetxController {
   final formKey = GlobalKey<FormState>();
   var selectedRadio = "".obs;
   var selectedCarFuel = "".obs;
+  RxString valueChooseDropDown = "Sedan".obs;
 
   void changeSelectedRadio(var gearBox) {
     selectedRadio.value = gearBox;
@@ -35,8 +36,6 @@ class AddCarScreenController extends GetxController {
     selectedCarFuel.value = fuelType;
     update(['changeSelectRadio']);
   }
-
-
 
   Future<void> onTepEdit(String key) async {
     oldImageUrlList.clear();
@@ -52,7 +51,8 @@ class AddCarScreenController extends GetxController {
         carSheet.text = data["CarSheet"];
         carDescription.text = data["CarDescription"];
         selectedRadio.value = data["GearBox"];
-        selectedCarFuel.value = data["CarType"];
+        selectedCarFuel.value = data["CarFuel"];
+        valueChooseDropDown.value = data["CarType"];
         oldImageUrlList.addAll(data["CarImage"]);
       }
     });
@@ -75,7 +75,6 @@ class AddCarScreenController extends GetxController {
   }
 
   Future<void> addCarData() async {
-
     String? key = database.ref("Admin").child("AddCar").push().key;
     List<String> imageList = [];
     int counter = 0;
@@ -94,7 +93,8 @@ class AddCarScreenController extends GetxController {
       "CarDoor": carDoor.text,
       "CarSheet": carSheet.text,
       "CarDescription": carDescription.text,
-      "CarType": selectedCarFuel.value,
+      "CarFuel": selectedCarFuel.value,
+      "CarType": valueChooseDropDown.value,
       "CarImage": imageList,
     };
     if (kDebugMode) {
@@ -106,7 +106,6 @@ class AddCarScreenController extends GetxController {
   }
 
   Future<void> onTapSave() async {
-
     for(var element in deleteImageList){
       await FirebaseStorage.instance.refFromURL(element).delete();
     }
@@ -127,7 +126,8 @@ class AddCarScreenController extends GetxController {
       "CarDoor": carDoor.text,
       "CarSheet": carSheet.text,
       "CarDescription": carDescription.text,
-      "CarType": selectedCarFuel.value,
+      "CarFuel": selectedCarFuel.value,
+      "CarType": valueChooseDropDown.value,
       "CarImage": oldImageUrlList,
     };
     print(editCarKey);
@@ -143,7 +143,6 @@ class AddCarScreenController extends GetxController {
       onTapSave();
     }
   }
-
 
   void homeScreen({Map? data}) {
     Get.back(result: data);

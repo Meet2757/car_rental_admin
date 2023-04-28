@@ -31,6 +31,7 @@ class StringRes {
   static const electronic = "Electronic";
   static const saveButton = "Save Button";
   static const pickImage = "Pick Image";
+  static const dropList = "Select Items :";
   ///---------------------------------------- Symbol ---------------------------
   static const rupees = "\u{20B9}";
   ///--------------------------------------SignIn Screen------------------------

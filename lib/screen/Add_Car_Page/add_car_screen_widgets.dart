@@ -359,7 +359,7 @@ Widget carName = GetBuilder<AddCarScreenController>(
                   children: [
                     WidgetSpan(
                       child: label(
-                          text: StringRes.carType,
+                          text: StringRes.carFuel,
                           size: 14,
                           fontFamily: AssetRes.poppinsRegular),
                     ),
@@ -417,6 +417,53 @@ Widget carName = GetBuilder<AddCarScreenController>(
                       text: StringRes.electronic,
                       size: 12,
                       fontFamily: AssetRes.poppinsRegular),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+              child: Row(
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        WidgetSpan(
+                          child: label(
+                              text: StringRes.carType,
+                              size: 14,
+                              fontFamily: AssetRes.poppinsRegular),
+                        ),
+                        WidgetSpan(
+                          child: label(
+                              text: StringRes.star,
+                              size: 14,
+                              color: ColorRes.mahogany,
+                              fontFamily: AssetRes.poppinsRegular),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Obx(()=>DropdownButton(
+                        dropdownColor: ColorRes.homeBackGround,
+                        icon: const Icon(Icons.arrow_drop_down),
+                        iconSize: 36,
+                        style: const TextStyle(
+                          color: ColorRes.black,
+                          fontFamily: AssetRes.poppinsRegular,
+                          fontSize: 20,
+                        ),
+                        value: controller.valueChooseDropDown.value,
+                        onChanged:(value) => controller.valueChooseDropDown.value = value!,
+                        items: controller.dropDownList.map((item) => DropdownMenuItem(
+                            value: item,
+                            child: label(
+                                text: item,
+                                fontFamily: AssetRes.poppinsRegular,),),).toList(),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -481,7 +528,7 @@ Widget carName = GetBuilder<AddCarScreenController>(
               child: Row(
                 children: [
                   InkWell(
-                    onTap: ()=>controller.onTapButton(),
+                    onTap: () => controller.onTapButton(),
                     child: Container(
                       child: commonDoneButton(StringRes.saveButton),
                     ),
@@ -523,14 +570,15 @@ Widget oldCarImage = GetBuilder<AddCarScreenController>(
                     ),
                   ),
                   Positioned(
-                    top: 10,right: 10,
+                    top: 10,
+                    right: 10,
                     child: InkWell(
                       onTap: () => controller.removeImage(index),
                       child: const SizedBox(
                         height: 40,
                         width: 40,
-                        child:
-                        Icon(Icons.delete, color: ColorRes.mahogany, size: 20),
+                        child: Icon(Icons.delete,
+                            color: ColorRes.mahogany, size: 20),
                       ),
                     ),
                   ),
