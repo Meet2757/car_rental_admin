@@ -342,7 +342,7 @@ Widget carName = GetBuilder<AddCarScreenController>(
                   onTap: () {
                     controller.carDescription;
                   },
-                  maxLength: 100,
+                  maxLength: 1000,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please Enter a Car Description';
