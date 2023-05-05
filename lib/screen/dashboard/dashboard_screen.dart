@@ -97,7 +97,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             child: Icon(
                               Icons.person,size: 145,color: ColorRes.white,
                             ),
-                          ):Image.network(controller.imageProfile!,fit: BoxFit.fitHeight,),
+                          ):Image.network(controller.imageProfile!,fit: BoxFit.fitHeight,
+                          ),
                         ),
                       ),
                     ),

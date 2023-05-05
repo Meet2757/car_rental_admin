@@ -75,6 +75,8 @@ class AddCarScreenController extends GetxController {
   }
 
   Future<void> addCarData() async {
+
+    Get.dialog(Center(child: CircularProgressIndicator(),));
     String? key = database.ref("Admin").child("AddCar").push().key;
     List<String> imageList = [];
     int counter = 0;
@@ -102,6 +104,7 @@ class AddCarScreenController extends GetxController {
     }
     await database.ref("Admin").child("AddCar").child(key!).set(data);
     data["key"] = key;
+    Get.back();
     homeScreen(data: data);
   }
 

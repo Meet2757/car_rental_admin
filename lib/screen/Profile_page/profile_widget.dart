@@ -126,7 +126,6 @@ Widget profile = GetBuilder<ProfileController>(
                     height: Get.height * 0.08,
                     child: TextFormField(
                       controller: controller.lastName,
-
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
