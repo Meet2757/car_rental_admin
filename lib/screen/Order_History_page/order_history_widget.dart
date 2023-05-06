@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental_admin/common/common_text_and_style.dart';
 import 'package:car_rental_admin/common/widgets/common_appbar.dart';
 import 'package:car_rental_admin/common/widgets/common_button.dart';
@@ -26,6 +27,7 @@ Widget orderListAppBar = GetBuilder<OrderHistoryController>(
 );
 
 Widget userName = GetBuilder<OrderHistoryController>(
+  id: "orderHistory",
   builder: (controller) {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0),
@@ -39,10 +41,16 @@ Widget userName = GetBuilder<OrderHistoryController>(
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Image.asset(
-                controller.orderListHistoryShow['userImage'],
-                color: ColorRes.black,
-                fit: BoxFit.fill,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: CachedNetworkImage(
+                  imageUrl: controller. orderListHistoryShow['UserImage'],width: 100,fit: BoxFit.fitHeight,
+                  placeholder: (context, url) => SizedBox(
+                      height: Get.height * 0.04,
+                      width: Get.width * 0.02,
+                      child: const Center(child: CircularProgressIndicator())),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
               ),
             ),
           ),
@@ -52,7 +60,7 @@ Widget userName = GetBuilder<OrderHistoryController>(
               Padding(
                 padding: const EdgeInsets.only(top: 15.0, left: 15.0),
                 child: Text(
-                  "Name : " + controller.orderListHistoryShow['name'],
+                  "Name : " + controller.orderListHistoryShow['UserName'],
                   style: const TextStyle(
                       fontSize: 11, fontFamily: AssetRes.poppinsRegular),
                 ),
@@ -62,7 +70,7 @@ Widget userName = GetBuilder<OrderHistoryController>(
                   left: 15.0,
                 ),
                 child: Text(
-                  "Email : " + controller.orderListHistoryShow['email'],
+                  "Phone No : " + controller.orderListHistoryShow['Phone'],
                   style: const TextStyle(
                       fontSize: 11, fontFamily: AssetRes.poppinsRegular),
                 ),
@@ -72,7 +80,7 @@ Widget userName = GetBuilder<OrderHistoryController>(
                   left: 15.0,
                 ),
                 child: Text(
-                  "Phone No : " + controller.orderListHistoryShow['phone_no'],
+                  "Birth Date : " + controller.orderListHistoryShow['Birth_Date'],
                   style: const TextStyle(
                       fontSize: 11, fontFamily: AssetRes.poppinsRegular),
                 ),
@@ -82,17 +90,7 @@ Widget userName = GetBuilder<OrderHistoryController>(
                   left: 15.0,
                 ),
                 child: Text(
-                  "Birth Date : " + controller.orderListHistoryShow['birthday'],
-                  style: const TextStyle(
-                      fontSize: 11, fontFamily: AssetRes.poppinsRegular),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 15.0,
-                ),
-                child: Text(
-                  "Gender : " + controller.orderListHistoryShow['gender'],
+                  "Gender : " + controller.orderListHistoryShow['Gender'],
                   style: const TextStyle(
                       fontSize: 11, fontFamily: AssetRes.poppinsRegular),
                 ),
@@ -106,6 +104,7 @@ Widget userName = GetBuilder<OrderHistoryController>(
 );
 
 Widget bookingDate = GetBuilder<OrderHistoryController>(
+  id: "orderHistory",
   builder: (controller) {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -118,7 +117,7 @@ Widget bookingDate = GetBuilder<OrderHistoryController>(
         ),
         child: Center(
           child: Text(
-            "Booking Date : " + controller.orderListHistoryShow['date'],
+            "Booking Date : " + controller.orderListHistoryShow['Booking_Date'],
             style: const TextStyle(
                 fontSize: 11, fontFamily: AssetRes.poppinsRegular),
           ),
@@ -129,20 +128,24 @@ Widget bookingDate = GetBuilder<OrderHistoryController>(
 );
 
 Widget bookingCar = GetBuilder<OrderHistoryController>(
+  id: "orderHistory",
   builder: (controller) {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       child: Container(
         width: Get.width,
+        height: Get.height*0.2,
         decoration: BoxDecoration(
           border: Border.all(width: 2, color: ColorRes.black),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Center(
-          child: Image.asset(
-            controller.orderListHistoryShow['image'],
-            width: 168,
-          ),
+        child:CachedNetworkImage(
+          imageUrl: controller.orderListHistoryShow['CarImage'],width: 168,
+          placeholder: (context, url) => SizedBox(
+              height: Get.height * 0.04,
+              width: Get.width * 0.02,
+              child: const Center(child: CircularProgressIndicator())),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
     );
@@ -167,12 +170,13 @@ Widget description = GetBuilder<OrderHistoryController>(
 );
 
 Widget carDescription = GetBuilder<OrderHistoryController>(
+  id: "orderHistory",
   builder: (controller) {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       child: Center(
         child: Text(
-          controller.orderListHistoryShow['description'],
+          controller.orderListHistoryShow['Description'],
           style: const TextStyle(
               fontSize: 11, fontFamily: AssetRes.poppinsRegular),
         ),
@@ -182,6 +186,7 @@ Widget carDescription = GetBuilder<OrderHistoryController>(
 );
 
 Widget userDocument = GetBuilder<OrderHistoryController>(
+  id: "orderHistory",
   builder: (controller) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -200,9 +205,13 @@ Widget userDocument = GetBuilder<OrderHistoryController>(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
-                  child: Image.asset(
-                    controller.orderListHistoryShow['aadhaar'],
-                    width: 168,
+                  child: CachedNetworkImage(
+                    imageUrl: controller.orderListHistoryShow['aadhaar'],width: 168,
+                    placeholder: (context, url) => SizedBox(
+                        height: Get.height * 0.04,
+                        width: Get.width * 0.02,
+                        child: const Center(child: CircularProgressIndicator())),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -217,9 +226,13 @@ Widget userDocument = GetBuilder<OrderHistoryController>(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
-                  child: Image.asset(
-                    controller.orderListHistoryShow['license'],
-                    width: 168,
+                  child: CachedNetworkImage(
+                    imageUrl: controller.orderListHistoryShow['licence'],width: 168,
+                    placeholder: (context, url) => SizedBox(
+                        height: Get.height * 0.04,
+                        width: Get.width * 0.02,
+                        child: const Center(child: CircularProgressIndicator())),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -234,9 +247,13 @@ Widget userDocument = GetBuilder<OrderHistoryController>(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
-                  child: Image.asset(
-                    controller.orderListHistoryShow['photo'],
-                    width: 168,
+                  child: CachedNetworkImage(
+                    imageUrl: controller.orderListHistoryShow['photo'],width: 168,
+                    placeholder: (context, url) => SizedBox(
+                        height: Get.height * 0.04,
+                        width: Get.width * 0.02,
+                        child: const Center(child: CircularProgressIndicator())),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
               ),
