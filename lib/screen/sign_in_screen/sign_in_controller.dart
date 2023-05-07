@@ -19,11 +19,11 @@ class SignInScreenController extends GetxController {
   }
 
   void homePageDrawer() {
-    Get.to(const HomepageDrawer());
+    Get.to(()=>const HomepageDrawer());
   }
 
   void singUpScreen() {
-    Get.to(const SignUpScreen());
+    Get.to(()=>const SignUpScreen());
   }
 
   Future<void> getData() async {

@@ -33,7 +33,8 @@ class OrderHistoryController extends GetxController {
           "Phone" : temp["phone"],
           "Birth_Date" : temp["Dob"],
           "Gender" : temp["Gender"],
-          "Booking_Date" : temp["CarType"],
+          "toDate" : temp["ToDate"],
+          "fromDate" : temp["FormDate"],
           "CarImage" : temp["image"][0],
           "Description" : temp["description"],
           "aadhaar" : temp["Aadhaar"],
@@ -48,7 +49,7 @@ class OrderHistoryController extends GetxController {
   }
 
   void backListScreen(){
-    Get.off(const OrderListScreen());
+    Get.off(()=>const OrderListScreen());
 
   }
 

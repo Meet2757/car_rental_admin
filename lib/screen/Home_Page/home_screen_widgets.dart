@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:car_rental_admin/common/widgets/common_button.dart';
 import 'package:car_rental_admin/screen/Home_Page/home_screen_controller.dart';
 import 'package:car_rental_admin/utils/asset_res.dart';
@@ -118,10 +119,18 @@ Widget carList = GetBuilder<HomeScreenController>(
                 ),
                 Positioned(
                   right: -10,
-                  child: Image.network(
-                    controller.carListShow[index]['image'],
-                    fit: BoxFit.fitHeight,
-                    height: 100,
+                  child: CachedNetworkImage(
+                    imageUrl: controller.carListShow[index]['image'],
+                    width: 140,
+                    placeholder: (context, url) => Center(
+                      child: SizedBox(
+                          height: Get.height * 0.04,
+                          width: Get.width * 0.04,
+                          child:
+                          const Center(child: CircularProgressIndicator())),
+                    ),
+                    errorWidget: (context, url, error) =>
+                    const Icon(Icons.error),
                   ),
                 ),
               ],

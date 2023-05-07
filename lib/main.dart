@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'CarRental',
       home: isLogin!=""?const HomepageDrawer():const SignInScreen(),
       debugShowCheckedModeBanner: false,
+        builder: (context, widget) => MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), child: widget!,)
     );
   }
 }

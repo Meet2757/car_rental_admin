@@ -48,7 +48,7 @@ class DashboardController extends GetxController{
 
 
   void notification(){
-    Get.to(const NotificationScreen());
+    Get.to(()=>const NotificationScreen());
   }
 
   void signInScreen() {

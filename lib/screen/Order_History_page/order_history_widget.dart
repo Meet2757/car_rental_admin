@@ -8,6 +8,7 @@ import 'package:car_rental_admin/utils/color_res.dart';
 import 'package:car_rental_admin/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 Widget orderListAppBar = GetBuilder<OrderHistoryController>(
   builder: (controller) {
@@ -116,10 +117,7 @@ Widget bookingDate = GetBuilder<OrderHistoryController>(
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Text(
-            "Booking Date : " + controller.orderListHistoryShow['Booking_Date'],
-            style: const TextStyle(
-                fontSize: 11, fontFamily: AssetRes.poppinsRegular),
+          child: label(text: 'To : ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListHistoryShow['toDate'],))} Form:  ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListHistoryShow['toDate'],))}' ,
           ),
         ),
       ),

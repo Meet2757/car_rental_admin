@@ -14,11 +14,16 @@ class OrderListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.homeBackGround,
       body: SafeArea(
-        child: Column(
-          children: [
-            verticalSpace(Get.height * 0.02),
-            orderList,
-          ],
+        child: GetBuilder<OrderListController>(
+          id: "order",
+          builder: (controller) {
+            return controller.isLoading?const Center(child: CircularProgressIndicator(),):Column(
+              children: [
+                verticalSpace(Get.height * 0.02),
+                orderList,
+              ],
+            );
+          }
         ),
       ),
     );

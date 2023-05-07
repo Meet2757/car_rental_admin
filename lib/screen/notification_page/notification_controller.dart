@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class NotificationController extends GetxController{
 
   void backButton(){
-    Get.back(result: const DashboardScreen());
+    Get.back(result: ()=> const DashboardScreen());
   }
 }

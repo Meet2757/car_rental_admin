@@ -4,6 +4,7 @@ import 'package:car_rental_admin/utils/asset_res.dart';
 import 'package:car_rental_admin/utils/color_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 Widget orderList = GetBuilder<OrderListController>(
     id:"order",
@@ -63,11 +64,6 @@ Widget orderList = GetBuilder<OrderListController>(
                           ),
                         ),
                       ),
-                      // Center(
-                      //   child: Image.network(
-                      //     controller.orderListShow[index]['userImage'],height: Get.height*0.170,
-                      //   ),
-                      // ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,8 +78,13 @@ Widget orderList = GetBuilder<OrderListController>(
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 15.0, top: 5.0),
-                          child: Text(
-                            controller.orderListShow[index]['subtitle'],
+                          child: Text('To : ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListShow[index]['toDate'],))}',
+                            style: const TextStyle(
+                                fontSize: 11, fontFamily: AssetRes.poppinsRegular),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0, top: 5.0),
+                          child: Text('Form : ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListShow[index]['fromDate'],))}',
                             style: const TextStyle(
                                 fontSize: 11, fontFamily: AssetRes.poppinsRegular),),
                         ),

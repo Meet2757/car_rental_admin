@@ -1,7 +1,6 @@
 import 'package:car_rental_admin/screen/Home_Page/home_screen.dart';
 import 'package:car_rental_admin/screen/Order_History_page/order_history_controller.dart';
 import 'package:car_rental_admin/screen/Order_History_page/order_history_screen.dart';
-import 'package:car_rental_admin/utils/asset_res.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +8,7 @@ class OrderListController extends GetxController{
 
   DatabaseReference database = FirebaseDatabase.instance.ref('Admin').child('Order');
   List<Map<String?, dynamic>> orderListShow = [];
+  bool isLoading = false;
 
   @override
   void onInit() {
@@ -18,6 +18,7 @@ class OrderListController extends GetxController{
   }
 
   Future<void> getOrderData() async {
+    isLoading = true;
     await database.once().then((value) {
       Map temp = value.snapshot.value as Map;
       print(temp);
@@ -27,15 +28,18 @@ class OrderListController extends GetxController{
           {
             "key": key,
             "title": value["title"],
-            "subtitle": value["CarType"],
+            "toDate" : value["ToDate"],
+            "fromDate" : value["FormDate"],
             "price": value["price"],
             "image": value["image"][0],
             "userImage": value["imageProfile"],
           },
         );
       });
+
       print(orderListShow);
     });
+    isLoading = false;
     update(["order"]);
   }
 
@@ -46,11 +50,11 @@ class OrderListController extends GetxController{
     Get.to(() => const OrderHistoryScreen());
   }
     void backButton(){
-    Get.to(const HomeScreen());
+    Get.to(()=>const HomeScreen());
   }
 
   void orderHistoryScreen(){
-    Get.to(const OrderHistoryScreen());
+    Get.to(()=>const OrderHistoryScreen());
   }
 
 }

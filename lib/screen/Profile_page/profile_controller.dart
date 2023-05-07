@@ -143,6 +143,6 @@ class ProfileController extends GetxController {
   //-------------Navigation auth--------------------
 
   void notification() {
-    Get.to(const NotificationScreen());
+    Get.to(()=>const NotificationScreen());
   }
 }
