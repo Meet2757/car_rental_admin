@@ -10,6 +10,7 @@ class SignInScreenController extends GetxController {
   final formKey = GlobalKey<FormState>();
   DatabaseReference database = FirebaseDatabase.instance.ref('Admin').child('Login');
   Map adminData ={};
+  final RxBool isPasswordVisible = false.obs;
 
   @override
   void onInit() {

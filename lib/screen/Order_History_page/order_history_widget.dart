@@ -117,7 +117,7 @@ Widget bookingDate = GetBuilder<OrderHistoryController>(
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: label(text: 'To : ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListHistoryShow['toDate'],))} Form:  ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListHistoryShow['toDate'],))}' ,
+          child: label(text: 'To : ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListHistoryShow['toDate'],))} From:  ${DateFormat("dd/MM/yyyy").format(DateTime.parse(controller.orderListHistoryShow['fromDate'],))}' ,
           ),
         ),
       ),
@@ -140,8 +140,8 @@ Widget bookingCar = GetBuilder<OrderHistoryController>(
         child:CachedNetworkImage(
           imageUrl: controller.orderListHistoryShow['CarImage'],width: 168,
           placeholder: (context, url) => SizedBox(
-              height: Get.height * 0.04,
-              width: Get.width * 0.02,
+              height: Get.height * 0.10,
+              width: Get.width * 0.10,
               child: const Center(child: CircularProgressIndicator())),
           errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
@@ -206,8 +206,8 @@ Widget userDocument = GetBuilder<OrderHistoryController>(
                   child: CachedNetworkImage(
                     imageUrl: controller.orderListHistoryShow['aadhaar'],width: 168,
                     placeholder: (context, url) => SizedBox(
-                        height: Get.height * 0.04,
-                        width: Get.width * 0.02,
+                        height: Get.height * 0.10,
+                        width: Get.width * 0.10,
                         child: const Center(child: CircularProgressIndicator())),
                     errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
@@ -227,8 +227,8 @@ Widget userDocument = GetBuilder<OrderHistoryController>(
                   child: CachedNetworkImage(
                     imageUrl: controller.orderListHistoryShow['licence'],width: 168,
                     placeholder: (context, url) => SizedBox(
-                        height: Get.height * 0.04,
-                        width: Get.width * 0.02,
+                        height: Get.height * 0.10,
+                        width: Get.width * 0.10,
                         child: const Center(child: CircularProgressIndicator())),
                     errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
@@ -248,8 +248,8 @@ Widget userDocument = GetBuilder<OrderHistoryController>(
                   child: CachedNetworkImage(
                     imageUrl: controller.orderListHistoryShow['photo'],width: 168,
                     placeholder: (context, url) => SizedBox(
-                        height: Get.height * 0.04,
-                        width: Get.width * 0.02,
+                        height: Get.height * 0.10,
+                        width: Get.width * 0.10,
                         child: const Center(child: CircularProgressIndicator())),
                     errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),

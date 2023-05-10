@@ -124,8 +124,8 @@ Widget carList = GetBuilder<HomeScreenController>(
                     width: 140,
                     placeholder: (context, url) => Center(
                       child: SizedBox(
-                          height: Get.height * 0.04,
-                          width: Get.width * 0.04,
+                          height: Get.height * 0.10,
+                          width: Get.width * 0.10,
                           child:
                           const Center(child: CircularProgressIndicator())),
                     ),

@@ -14,8 +14,8 @@ Widget imageShow = GetBuilder<ProfileController>(
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SizedBox(
-            height: 40,
+          SizedBox(
+            height: Get.height*0.040,
           ),
           Stack(
             alignment: Alignment.bottomCenter,

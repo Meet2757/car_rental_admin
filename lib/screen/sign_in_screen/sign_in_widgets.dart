@@ -83,42 +83,49 @@ Widget phone(BuildContext context) => GetBuilder<SignInScreenController>(
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: controller.password,
-                    onTap: () {
-                      controller.password;
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      label: Text.rich(
-                        TextSpan(
-                          children: [
-                            WidgetSpan(
-                              child: label(
-                                  text: StringRes.password,
-                                  size: 14,
-                                  fontFamily: AssetRes.poppinsRegular),
-                            ),
-                            WidgetSpan(
-                              child: label(
-                                  text: StringRes.star,
-                                  size: 14,
-                                  color: ColorRes.mahogany,
-                                  fontFamily: AssetRes.poppinsRegular),
-                            ),
-                          ],
+                  child: Obx(()=>TextFormField(
+                      controller: controller.password,
+                      onTap: () {
+                        controller.password;
+                      },
+                      obscureText: controller.isPasswordVisible.value,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            controller.isPasswordVisible.value ? Icons.visibility_off : Icons.visibility,
+                          ), onPressed: () { controller.isPasswordVisible.toggle(); },
+                        ),
+                        label: Text.rich(
+                          TextSpan(
+                            children: [
+                              WidgetSpan(
+                                child: label(
+                                    text: StringRes.password,
+                                    size: 14,
+                                    fontFamily: AssetRes.poppinsRegular),
+                              ),
+                              WidgetSpan(
+                                child: label(
+                                    text: StringRes.star,
+                                    size: 14,
+                                    color: ColorRes.mahogany,
+                                    fontFamily: AssetRes.poppinsRegular),
+                              ),
+                            ],
+                          ),
+                        ),
+                        hintText: 'Enter Password',
                       ),
-                      hintText: 'Enter Password',
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter a Password';
+                        }
+                        return null;
+                      },
                     ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please Enter a Password';
-                      }
-                      return null;
-                    },
                   ),
                 ),
                 verticalSpace(Get.height * 0.02),
