@@ -40,7 +40,7 @@ class AddCarScreenController extends GetxController {
   Future<void> onTepEdit(String key) async {
     oldImageUrlList.clear();
     await database.ref("Admin").child("AddCar").child(key).get().then((value) {
-      print(value.value);
+      //print(value.value);
       if (value.value != null) {
         Map data = value.value as Map;
         editCarKey = key;
@@ -62,7 +62,7 @@ class AddCarScreenController extends GetxController {
   Future<void> removeImage(int index) async {
     deleteImageList.add(oldImageUrlList[index]);
     oldImageUrlList.removeAt(index);
-    print(oldImageUrlList.length);
+    //print(oldImageUrlList.length);
     update(["oldImage"]);
   }
 
@@ -132,7 +132,7 @@ class AddCarScreenController extends GetxController {
       "CarType": valueChooseDropDown.value,
       "CarImage": oldImageUrlList,
     };
-    print(editCarKey);
+    //print(editCarKey);
     await database.ref("Admin").child("AddCar").child(editCarKey!).update(data);
     homeScreen();
   }

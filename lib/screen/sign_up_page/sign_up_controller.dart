@@ -40,7 +40,7 @@ class SignUpScreenController extends GetxController {
 
   void loginData(){
     String? key = database.ref("Admin").child("SignUp").push().key;
-    print(key);
+    //print(key);
     updateKey = key!;
     database.ref("Admin").child("SignUp").child(key).set({
     "First Name": firstNameController.text,

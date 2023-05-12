@@ -1,5 +1,6 @@
 import 'package:car_rental_admin/common/common_text_and_style.dart';
 import 'package:car_rental_admin/screen/Home_Page/home_screen.dart';
+import 'package:car_rental_admin/screen/Order_History_page/order_history_screen.dart';
 import 'package:car_rental_admin/screen/Order_List_Page/order_list_screen.dart';
 import 'package:car_rental_admin/screen/Profile_page/profile_screen.dart';
 import 'package:car_rental_admin/screen/dashboard/dashboard_controller.dart';
@@ -123,7 +124,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         size: 13,
                         color: ColorRes.white),
                     onTap: () {
-                      Get.to(const DashboardScreen());
+                      Get.to(const OrderHistoryScreen());
                     },
                   ),
                   const Divider(thickness: 2),

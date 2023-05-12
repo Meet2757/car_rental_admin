@@ -21,9 +21,9 @@ class OrderListController extends GetxController{
     isLoading = true;
     await database.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      print(temp);
+      //print(temp);
       temp.forEach((key,value){
-        print(value);
+        //print(value);
         orderListShow.add(
           {
             "key": key,
@@ -36,8 +36,7 @@ class OrderListController extends GetxController{
           },
         );
       });
-
-      print(orderListShow);
+      //print(orderListShow);
     });
     isLoading = false;
     update(["order"]);

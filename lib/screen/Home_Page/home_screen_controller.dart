@@ -24,7 +24,7 @@ class HomeScreenController extends GetxController {
   Future<void> getCarData() async {
     await database.once().then((value) {
       Map temp = value.snapshot.value as Map;
-      print(temp);
+      //print(temp);
       temp.forEach((key, value) {
         carListShow.add(
           {

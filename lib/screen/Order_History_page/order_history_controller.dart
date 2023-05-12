@@ -23,7 +23,7 @@ class OrderHistoryController extends GetxController {
     isLoading = true;
     await database.child(oId).get().then((value) {
       Map temp = value.value as Map;
-      print(temp);
+      //print(temp);
       images.clear();
       orderListHistoryShow.addAll(
         {
@@ -44,7 +44,7 @@ class OrderHistoryController extends GetxController {
       );
     });
     isLoading = false;
-    print(orderListHistoryShow);
+    //print(orderListHistoryShow);
     update(["orderHistory"]);
   }
 
